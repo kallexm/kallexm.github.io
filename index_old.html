@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <title>My Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" type="text/css" href="base_styles.css">
+        
+        <script>
+            document.onmousemove = func1;
+            function func1(event) {
+                var eventDoc, doc, body;
+                event = event || window.event;
+                
+                if (event.pageX == null && event.clientX != null)
+                {
+                    eventDoc = (event.target && event.target.ownerDocument) || document;
+                    doc = eventDoc.documentElement;
+                    body = eventDoc.body;
+                    
+                    event.pageX = event.clientX +
+                        (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                        (doc && doc.clientLeft || body && body.clientLeft || 0);
+                    event.pageY = event.clientY +
+                        (doc && doc.scrollTop || body && body.scrollTop || 0) -
+                        (doc && doc.clientTop || body && body.clientTop || 0);
+                }
+                
+                var x = event.pageX;
+                var y = event.pageY;
+                
+                var pos_str;
+                if (x || y)
+                {
+                    var pos_str = "("+x.toString()+","+y.toString()+")"
+                    document.getElementById("xy_pos").innerHTML=pos_str;
+                }
+            }
+        </script>
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        
+    </head>
+    <!--
+    <body style="background-color: lightblue;">
+        <h3>
+            Yo Yo Yo!
+        </h3>
+        <p style="color: red">
+        Hello <br> World
+        </p>
+        <hr>
+        Hello
+        <a href="sub1.html">text</a>
+        
+        <em id="xy_pos">(0.0,0.0)</em>
+
+        <model-viewer style="width: 640px; height: 320px; background-color: #606060;" camera-controls camera-target="-111m 6.7m 0m" src="emerald.glb" alt="A 3D model of an emerald core" camera-target="-2.5m 0m 2.5m" camera-orbit="0deg 45deg 400%" min-camera-orbit="auto 0deg 25%" max-camera-orbit="auto 180deg 10%" environment-image="neutral" ></model-viewer>
+        <hr>
+        <model-viewer style="width: 640px; height: 320px; background-color: #606060;" camera-controls src="organizer.glb" alt="organizer" camera-target="-2.5m 0m 2.5m" camera-orbit="0deg 45deg 75%" min-camera-orbit="auto 0deg 175%" max-camera-orbit="auto 180deg 75%" environment-image="neutral"  shadow-intensity="1"></model-viewer>
+        
+    </body>
+    -->
+    
+    <body>
+        <div class="sidenavmenu">
+            <a href="#">Overview</a>
+            <a href="#">Parts</a>
+        </div>
+        
+        <div class="mainContent" style="background-color: white">
+            <h2>Sidebar</h2>
+        </div>
+    </body>
+</html>
+
+<!-- python -m http.server -->
+
+<!-- You didn't fail. You just didn't succeed.
+     Du feilet ikke. Du greide det bare ikke. -->
+     
+<!-- This is treason!
+     No, this is simply an organizational restructure! -->

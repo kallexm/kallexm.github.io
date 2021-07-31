@@ -1,11 +1,82 @@
-h3 {color: blue; text-align: center;}
+body {
+    font-family: "Lato", sans-serif;
+}
 
-a:link {color: purple;}
-a:visited {color: purple;}
-a:hover {color: yellow;}
-a:active {color: green;}
+.sideNavMenu {
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    
+    background-color: #e6e6e6;
+}
 
-organizer {
-    width: 800px;
-    height: 600px;
+.sideNavMenu a {
+    padding: 4px 8px 4px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0b0f10;
+    display: block;
+}
+
+.sideNavMenu a.active {
+    color: #ffffff;
+    background-color: #43a387;
+}
+
+.sideNavMenu a:hover:not(.active) {
+    color: #ffffff;
+    background-color: #63c3a7;
+}
+
+.menuLogo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 8%;
+    height: 150px;
+    background-color: #53b397;
+}
+
+.menuLogo img {
+    width: 30%;
+    padding-right: 5%;
+    display: block;
+    float: left;
+}
+
+.menuLogo h1 {
+    width: 50%;
+    padding-left: 2%;
+    display: block;
+    float: left;
+    color: #e6e6e6;
+    font-size: 34px;
+    text-align: left;
+    text-shadow: 2px 0 0 #807457, -2px 0 #807457, 0 2px #807457, 0 -2px #807457, 1px 1px #807457, -1px 1px #807457, 1px -1px #807457, -1px -1px #807457; 
+}
+
+.menuLogo h2 {
+    width: 90%;
+    display: block;
+    float: left;
+    color: #e6e6e6;
+    text-shadow: 1px 0 0 #807457, -1px 0 #807457, 0 1px #807457, 0 -1px #807457, 1px 1px #807457, -1px 1px #807457, 1px -1px #807457, -1px -1px #807457;
+    font-size: 16px;
+    text-align: center;
+}
+
+.mainContent {
+    margin-left: 240px;
+    font-size: 28px;
+    padding: 0px 10px;
+    
+    border: 1px solid blue;
+}
+
+@media screen and (max-height: 450px) {
+    .sideNavMenu {padding-top: 15px;}
+    .sideNavMenu a {font-size: 18px;}
 }

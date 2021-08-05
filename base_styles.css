@@ -73,10 +73,17 @@ body {
     font-size: 28px;
     padding: 0px 10px;
     
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
 }
 
 @media screen and (max-height: 450px) {
     .sideNavMenu {padding-top: 15px;}
     .sideNavMenu a {font-size: 18px;}
+}
+
+.partContentBox {
+    border: 8px solid #63c3a7;
+    width: 1500px;
+    height: 750px;
+    margin-top: 32px;
 }

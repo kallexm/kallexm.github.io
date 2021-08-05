@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
         
     <link rel="stylesheet" type="text/css" href="base_styles.css">
+    
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    
 </head>
 <body>
-    <div class="sideNavMenu">
+    <div class="sideNavMenu"">
         <div class="menuLogo">
-            <img src="mythra_sword_icon.svg">
+            <img src="mythra_sword_icon.svg" id="ms_icon">
             <h1>Mythra Sword</h1>
             <h2>3D printed replica</h2>
         </div>
@@ -17,24 +20,81 @@
         <a class="active" href="Parts.html">Parts</a>
     </div>
         
-    <div class="mainContent" style="background-color: white">
+    <div class="mainContent" style="background-color: white" id="test1">
         <h2>Parts</h2>
-        <!--<object type="image/svg+xml" data="test_svg2.svg" class="testSvg">
-            Test SVG
-        </object>-->
-        <object type="image/svg+xml" data="mythra_sword_flat_gray.svg" class="partSelector" style="width:1500px">
+        <object id="partSelector" type="image/svg+xml" data="mythra_sword_flat_gray.svg" style="width:1500px">
             {Mythra Sword Part Selector}
         </object>
-        <!--<svg width="77.135864mm" height="54.009624mm" viewBox="0 0 77.135864 54.009624" version="1.1" id="svg5" inkscape:version="1.1 (c68e22c387, 2021-05-23)" sodipodi:docname="test_svg.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-            <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:document-units="mm" showgrid="false" inkscape:zoom="1.0482005" inkscape:cx="234.21092" inkscape:cy="174.10791" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="layer1" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0"/>
-            <defs id="defs2" />
-            <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-30.110571,-10.298672)">
-                <rect style="fill-opacity:1;stroke:#00a7a0;stroke-width:1.958;stroke-miterlimit:10;stroke-opacity:1" id="rect846" class="sqareA" width="41.408653" height="31.05649" x="46.059895" y="-29.537373" transform="rotate(45)" />
-                <ellipse style="fill:#cab88b;fill-opacity:1;stroke:#00a7a0;stroke-width:1.958;stroke-miterlimit:10;stroke-opacity:1" id="path3434" cx="98.44252" cy="25.620296" rx="7.8249183" ry="7.69871" />
-            </g>
-        </svg>-->
+        <!--<input type="button" id="button1" value="Click this!"></input>-->
+        <div id="partHandle1" class="partContentBox" style="display: none;">
+            <model-viewer style="width: 50%; height: 100%; background-color: #606060;" camera-controls src="organizer.glb" alt="organizer" camera-target="-2.5m 0m 2.5m" camera-orbit="0deg 45deg 75%" min-camera-orbit="auto 0deg 175%" max-camera-orbit="auto 180deg 75%" environment-image="neutral"  shadow-intensity="1"></model-viewer>
+        </div>
+        <div id="partHandle2" class="partContentBox" style="display: none;">
+            Da da da
+        </div>
     </div>
 </body>
+
+<script>
+    class SwordPartSelector
+    {
+        constructor()
+        {
+            this.partSections = new Array();
+            console.log("constructor");
+        }
+      
+        addSection(partId)
+        {
+            this.partSections[this.partSections.length] = partId;
+            console.log("Add ", partId);
+            return;
+        }
+            
+        switchToSection(partId)
+        {
+            for (let i = 0; i < this.partSections.length; i++)
+            {
+                var partSectionId = this.partSections[i];
+                if (partSectionId == partId)
+                {
+                    document.getElementById(partSectionId).style.display = "";
+                }
+                else
+                {
+                    document.getElementById(partSectionId).style.display = "none";
+                }                 
+            }
+            return;
+        }
+    }
+
+        let testText = "Yo!!!";
+    
+        function showTestText(text)
+        {
+            document.getElementById("partHandle1").innerHTML = text;
+            document.getElementById("partHandle1").style.display = "";
+        }
+        
+        window.onload=function() {
+           /*pS = document.getElementById("partSelector");
+            pSSvgCDoc = pS.contentDocument;
+            handle_layer = pSSvgCDoc.getElementById("layer22");
+            handle_layer.addEventListener('click', function(){ showTestText(testText) });*/
+            
+            let sPS = new SwordPartSelector();
+            sPS.addSection("partHandle1");
+            sPS.addSection("partHandle2");
+            
+            pSCD = document.getElementById("partSelector").contentDocument;
+            pSCD.getElementById("layer22").addEventListener("click", function(){ sPS.switchToSection("partHandle1") });
+            pSCD.getElementById("layer17").addEventListener("click", function(){ sPS.switchToSection("partHandle2") });
+        }
+    
+        
+</script>
+
 </html>
 
 <!-- python -m http.server -->
